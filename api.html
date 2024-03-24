@@ -55,15 +55,40 @@
 	</style>
 </head>
 <body>
+	<script type="text/javascript">
+			pokeNum=Math.floor(Math.random() * 600);
+			url="https://pokeapi.co/api/v2/pokemon-form/"+pokeNum;
+			console.log(url);
+			fetch(url)
+			.then((response) => response.json())
+			.then((myPokemon) => {
+
+				document.getElementById("pokemonName").innerHTML= myPokemon.pokemon.name;
+				document.getElementById("pokePic").src= myPokemon.sprites.front_default;
+				document.getElementById("pokeVersion").innerHTML=myPokemon.version_group.name;
+				console.log(myPokemon.pokemon.name)
+        })
+
+	</script>
 	<h2>API homework</h2>
 	<div style="text-align: center; padding-top:20px;">
 		<a class="button" href="index.html">HOME</a>
 		<a class="button" href="php.html">PHP HW</a>
 	</div>
 	<div id="box">
-	<h3>What is my API?</h3>
-	<p>I picked the Pokemon API. It fetches all of the data on pokemon types, abilities, egg groups, genders, species, moves, stats. It also has data on all the pokemon games and the results of potential encounters. There's a lot of data available so <a href="https://pokeapi.co/docs/v2" class="link">click here for more info</a></p>
-	<h3>What is my API?</h3>
+		<div style="text-align:center;">
+			<h3 id="pokemonName"></h3>
+			<img src="" id="pokePic">
+			<p>Version: <span id="pokeVersion"></span></p>
+		</div>
+		<h3>What is my API?</h3>
+		<p>I picked the Pokemon API. It fetches all of the data on pokemon types, abilities, egg groups, genders, species, moves, stats. It also has data on all the pokemon games and the results of potential encounters. There's a lot of data available so <a href="https://pokeapi.co/docs/v2" class="link">click here for more info</a></p>
+		<br>
+		<h3>Where did I find it?</h3>
+		<a href="https://medium.com/codex/15-fun-and-interesting-apis-to-use-for-your-next-coding-project-in-2022-86a4ff3a2742" class="link">I found the pokemon api here!</a>
+		<br>
+		<h3>Parameters for this api</h3>
+		<p>The big parameter I provided was the pokemon number. Each pokemon has a number assigned to it in the pokedex. My code randomly generates a number between 0-600 that corresponds to a pokemon and adds that to the query string.</p>
 	</div>
 </body>
 </html>
